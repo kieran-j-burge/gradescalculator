@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragement="head">
+    <meta charset="UTF-8"/>
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../static/css/css/bootstrap.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../static/css/css/bootstrap-grid.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../static/css/css/bootstrap-reboot.css"/>
+    <link rel="stylesheet" th:href="@{/css/master.css}" href="../static/css/master.css"/>
+    <!--<script  th:src="@{/css/js/jquery.js}" src="../static/css/js/jquery.js"></script>-->
+    <script src="../css/js/jquery-3.3.1.js"></script>
+    <!--<script src="https://use.fontawesome.com/62a2fac236.js"></script>-->
+</head>
+<body>
+
+<nav id="custom-nav" th:fragment="nav-uni-gb">
+    <div class="wrapper">
+
+        <ul>
+            <div class="left">
+                <li>
+
+                </li>
+            </div>
+
+            <!--<div class="right">-->
+                <!--<li >-->
+                    <!--<a href="/signup"><i class="fa fa-user" aria-hidden="true"></i>Signup</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>-->
+                <!--</li>-->
+
+            <!--</div>-->
+        </ul>
+    </div>
+</nav>
+
+<div th:fragment="add-module-done" class="module-row module-row-done">
+    <div class="col-md-6 col-sm-12 float-left">
+        <input type="text" class="form-control module-name" placeholder="Module Name" />
+    </div>
+    <div class="col-md-2 col-sm-12 float-left">
+        <input type="text" class="form-control module-score" placeholder="00.0%" />
+    </div>
+    <div class="col-md-2 col-sm-12 float-left">
+        <input  class="form-control mod-done-weighting" placeholder="00.0%">
+
+        </input>
+    </div>
+    <div class="col-md-2 col-sm-12 float-left">
+        <button type="button" class="btn btn-danger remove-module">Remove</button>
+    </div>
+</div>
+
+<div th:fragment="add-module-future" class="module-row module-row-fut">
+    <div class="col-md-6 col-sm-12 float-left">
+        <input type="text" class="form-control module-name" placeholder="Module Name" />
+    </div>
+
+    <div class="col-md-2 col-sm-12 float-left">
+        <input  class="form-control mod-fut-weighting" placeholder="00.0%">
+
+        </input>
+    </div>
+    <div class="col-md-2 col-sm-12 float-left">
+        <button type="button" class="btn btn-danger remove-module">Remove</button>
+    </div>
+</div>
+
+<div th:fragment="add-module-current" class="module-row module-row-current">
+
+    <div class="row mod-current-info">
+        <div class="col-md-12 col-sm-12 mod-current-name">
+            <input type="text" class="form-control module-name" placeholder="Module Name" />
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <input  class="form-control mod-current-weighting" placeholder="00.0%">
+
+            </input>
+        </div>
+    </div>
+    <div id="examAppender" class="step-functionality">
+        <div class="row exam-row">
+            <div class="col-md-4">
+                <input type="text" class="form-control exam-name" placeholder="Exam Name" />
+            </div>
+            <div class="col-md-3">
+                <input  class="form-control exam-weighting" placeholder="00.0%">
+
+                </input>
+            </div>
+            <div class="col-md-1">
+                <select  class="form-control exam-complete">
+                    <option>Pick</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control exam-score hidden" placeholder="Exam Score" />
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger remove-exam">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button id="addExamBtn" type="button" class="btn btn-primary add-module-btn">Add Exam</button>
+            <button type="button" class="btn btn-danger remove-module">Remove</button>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="add-exam" class="row exam-row">
+    <div class="col-md-4">
+        <input type="text" class="form-control exam-name" placeholder="Exam Name" />
+    </div>
+    <div class="col-md-3">
+        <input  class="form-control exam-weighting" placeholder="00.0%">
+
+        </input>
+    </div>
+    <div class="col-md-1">
+        <select  class="form-control exam-complete">
+            <option>Pick</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <input type="text" class="form-control exam-score hidden" placeholder="Exam Score" />
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-danger remove-exam">Remove</button>
+    </div>
+</div>
+
+<div th:fragment="mod_breakdown">
+    <div class="container">
+        <div class="row">
+            <th:block th:each="mod : ${modules}">
+                <div class="col-md-3">
+                    <h1 th:text="${mod.name}" ></h1>
+                </div>
+                <div class="col-md-3">
+                    <h1 th:text="${mod.currentScore}" ></h1>
+                </div>
+                <div class="col-md-3">
+                    <h1 th:text="${mod.weightCompleted}" ></h1>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="gb_result" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 th:text="${scores.score}"></h1>
+            </div>
+            <div class="col-md-6">
+                <h1 th:text="${scores.weightProvided}"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:fragment="footer" class="container-fluid text-center bg-lightgray">
+
+    <div class="copyrights" style="margin-top:25px;">
+        <p>WebDevK © 2016, All Rights Reserved
+            <br/>
+            <span>Web Design By: Kieran Burge</span></p>
+        <p><a href="https://www.linkedin.com/in/kieran-burge-a53504124/" target="_blank">Linkedin <i class="fa fa-linkedin-square" aria-hidden="true"></i> </a></p>
+    </div>
+</footer>
+
+</body>
+</html>
