@@ -5,14 +5,11 @@
 </head>
 
 <body>
-<div id="main">
-
-</div>
-<!--<nav th:replace="fragments :: navigation"></nav>-->
-
 <div th:replace="fragments :: main-top-border">
 
 </div>
+
+
 
 <div th:replace="fragments :: logo-lg">
 
@@ -35,16 +32,19 @@
     </div>
 </div>
 
-<div id="searchContainer" class="container">
-    <div class="row">
-        <div id="custom-search-input">
-            <div class="input-group col-md-12">
-                <input type="text" class="  search-query form-control" placeholder="Search" style="
-                       font-size: 35px;"/>
+<div class="container-fluid">
+    <div class="container ">
+        <div class="row">
+            <div class="center" style="width: 50%;">
+                <a href="/qualification/uni_gb">
+                    <button  id="beginBtn" type="button" class="btn btn-primary begin-btn">Begin</button>
+                </a>
             </div>
         </div>
     </div>
 </div>
+
+
 
 </body>
 
