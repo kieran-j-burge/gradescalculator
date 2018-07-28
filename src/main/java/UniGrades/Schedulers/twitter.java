@@ -17,22 +17,22 @@ import twitter4j.conf.ConfigurationContext;
 public class twitter {
     private TwitterService twitterService;
 
-    @Autowired
-    public twitter(TwitterService twitterService) {
-        this.twitterService = twitterService;
-    }
-
-
-    @Scheduled(cron="0 */10 * * * *")
-    public void tweetAd() {
-        try {
-
-            String tweet = twitterService.getTweet();
-            twitterService.performTweet(tweet);
-        } catch (Exception e){
-
-        }
-    }
+//    @Autowired
+//    public twitter(TwitterService twitterService) {
+//        this.twitterService = twitterService;
+//    }
+//
+//
+//    @Scheduled(cron="0 */30 * * * *")
+//    public void tweetAd() {
+//        try {
+//
+//            String tweet = twitterService.getTweet();
+//            twitterService.performTweet(tweet);
+//        } catch (Exception e){
+//
+//        }
+//    }
 
 
 }
